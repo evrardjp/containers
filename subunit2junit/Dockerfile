@@ -1,5 +1,7 @@
 FROM python:alpine
 
-RUN pip install -y junitxml python-subunit
+COPY requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
+
 WORKDIR /data
 CMD ["python", "-m", "http.server"]
