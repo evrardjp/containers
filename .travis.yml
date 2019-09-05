@@ -1,0 +1,10 @@
+services:
+  - docker
+env:
+  - FOLDER="subunit2junit" TAG="latest"
+script:
+  - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
+  - cd ${FOLDER}; docker build --no-cache --force-rm -t evrardjp/${FOLDER}:${TAG} .
+  - docker push ${DOCKER_USERNAME}/${FOLDER}:${TAG}
+matrix:
+  fast_finish: true
