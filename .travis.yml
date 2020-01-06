@@ -2,6 +2,7 @@ services:
   - docker
 env:
   - FOLDER="subunit2junit" TAG="latest"
+  - FOLDER="osc" TAG="latest"
 script:
   - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
   - cd ${FOLDER}; docker build --no-cache --force-rm -t evrardjp/${FOLDER}:${TAG} .
