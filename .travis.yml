@@ -2,6 +2,9 @@ services:
   - docker
 env:
   - FOLDER="subunit2junit" TAG="latest"
+  - FOLDER="xenial-python" TAG="latest"
+  - FOLDER="bionic-python" TAG="latest"
+  - FOLDER="focal-python" TAG="latest"
 script:
   - echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
   - cd ${FOLDER}; docker build --no-cache --force-rm -t evrardjp/${FOLDER}:${TAG} .
