@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: cd ${{ matrix.image }} && docker build . --file Dockerfile --tag ${{ matrix.image }}:$(date +%Y%m%d)
+      run: cd ${{ matrix.image }} && docker build . --file Dockerfile --tag ${{ matrix.image }}:$(date +%Y%m%d) --label "org.opencontainers.image.source=https://github.com/${{ github.actor }}/containers"
     - name: Log into GitHub Container Registry
       # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
       run: echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
