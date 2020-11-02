@@ -3,6 +3,8 @@ name: Docker Image Public publish
 on:
   push:
     branches: [ master ]
+  schedule:
+  - cron: 42 6 * * *
 jobs:
   build:
     runs-on: ubuntu-latest
